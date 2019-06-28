@@ -11,11 +11,18 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
-
+    var window: NSWindow!;
+    var captureController: CaptureViewController!;
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+
+        captureController = CaptureViewController()
+        
+        window = NSWindow(contentRect: NSMakeRect(10, 10, 300, 300), styleMask:[.titled, .closable, .resizable], backing: .buffered, defer: false)
+        window.contentViewController = captureController
+        
+        window.makeKeyAndOrderFront(nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

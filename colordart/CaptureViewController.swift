@@ -10,6 +10,16 @@ import Cocoa
 
 class CaptureViewController: NSViewController {
 
+    override func loadView() {
+        let frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 100))
+        let view = NSView(frame: frame)
+        
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.blue.cgColor
+        
+        self.view = view
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
