@@ -23,6 +23,14 @@ class CaptureViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+    
+        NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: {(event: NSEvent) -> Void in
+            self.mouseMoved()
+        })
+    }
+    
+    func mouseMoved() {
+        NSLog("%@", NSStringFromPoint(NSEvent.mouseLocation))
     }
     
 }
