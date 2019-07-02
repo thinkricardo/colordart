@@ -22,15 +22,23 @@ class CaptureViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     
         NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: {(event: NSEvent) -> Void in
-            self.mouseMoved()
+            self.mouseMoved(mouseLocation: NSEvent.mouseLocation)
         })
     }
     
-    func mouseMoved() {
-        NSLog("%@", NSStringFromPoint(NSEvent.mouseLocation))
+    func mouseMoved(mouseLocation: NSPoint) {
+        NSLog("%@", NSStringFromPoint(mouseLocation))
+        
+        self.captureArea(aroundPoint: mouseLocation)
+    }
+    
+    func captureArea(aroundPoint: NSPoint) {
+        let area = CGRect(x: aroundPoint.x - 50, y: aroundPoint.y - 50, width: 100, height: 100)
+        let image = CGWindowListCreateImage(area, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)
+        
+        self.view.layer?.contents = image
     }
     
 }
