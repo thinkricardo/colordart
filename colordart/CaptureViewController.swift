@@ -29,16 +29,26 @@ class CaptureViewController: NSViewController {
     }
     
     func mouseMoved(mouseLocation: NSPoint) {
-        NSLog("%@", NSStringFromPoint(mouseLocation))
-        
         self.captureArea(aroundPoint: mouseLocation)
     }
     
     func captureArea(aroundPoint: NSPoint) {
-        let area = CGRect(x: aroundPoint.x - 50, y: aroundPoint.y - 50, width: 100, height: 100)
+        let convertedPoint = self.convertCoordinates(point: aroundPoint)
+        
+        let area = CGRect(x: convertedPoint.x - 50, y: convertedPoint.y - 50, width: 100, height: 100)
         let image = CGWindowListCreateImage(area, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)
         
         self.view.layer?.contents = image
+    }
+        
+    func currentScreenForMouseLocation(point: NSPoint) -> NSScreen? {
+        return NSScreen.screens.first(where: { NSMouseInRect(point, $0.frame, false) })
+    }
+    
+    func convertCoordinates(point: NSPoint) -> NSPoint {
+        let screen: NSScreen = self.currentScreenForMouseLocation(point: point)!
+        
+        return NSPoint(x: point.x, y: screen.frame.height - point.y)
     }
     
 }
