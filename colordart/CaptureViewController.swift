@@ -39,8 +39,21 @@ class CaptureViewController: NSViewController {
         let image = CGWindowListCreateImage(area, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)
         
         self.view.layer?.contents = image
-    }
         
+        self.getColor(fromImage: image!)
+    }
+    
+    func getColor(fromImage image: CGImage) {
+        let image = NSBitmapImageRep.init(cgImage: image)
+        let color = image.colorAt(x: 50, y: 50)
+        
+        let red = Int(round(color!.redComponent * 255))
+        let green = Int(round(color!.greenComponent * 255))
+        let blue = Int(round(color!.blueComponent * 255))
+
+        print("r:\(red) g:\(green) b:\(blue)")
+    }
+    
     func currentScreenForMouseLocation(point: NSPoint) -> NSScreen? {
         return NSScreen.screens.first(where: { NSMouseInRect(point, $0.frame, false) })
     }
