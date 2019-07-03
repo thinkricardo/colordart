@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C45536722C5699500628CEC /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45536622C5699500628CEC /* CaptureViewController.swift */; };
+		8C737B2B22C6CC7500143F9E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C737B2A22C6CC7500143F9E /* main.swift */; };
 		8CA6266F22BC51C900310FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6266E22BC51C900310FF0 /* AppDelegate.swift */; };
 		8CA6267222BC51C900310FF0 /* colordart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6267022BC51C900310FF0 /* colordart.xcdatamodeld */; };
 		8CA6267422BC51C900310FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CA6267322BC51C900310FF0 /* Assets.xcassets */; };
-		8CA6267722BC51C900310FF0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CA6267522BC51C900310FF0 /* MainMenu.xib */; };
 		8CA6268322BC51C900310FF0 /* colordartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6268222BC51C900310FF0 /* colordartTests.swift */; };
 		8CA6268E22BC51C900310FF0 /* colordartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6268D22BC51C900310FF0 /* colordartUITests.swift */; };
 /* End PBXBuildFile section */
@@ -33,11 +34,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C45536622C5699500628CEC /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		8C737B2A22C6CC7500143F9E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8CA6266B22BC51C900310FF0 /* colordart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = colordart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA6266E22BC51C900310FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CA6267122BC51C900310FF0 /* colordart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = colordart.xcdatamodel; sourceTree = "<group>"; };
 		8CA6267322BC51C900310FF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8CA6267622BC51C900310FF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8CA6267822BC51C900310FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CA6267922BC51C900310FF0 /* colordart.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = colordart.entitlements; sourceTree = "<group>"; };
 		8CA6267E22BC51C900310FF0 /* colordartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = colordartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,10 +100,11 @@
 			children = (
 				8CA6266E22BC51C900310FF0 /* AppDelegate.swift */,
 				8CA6267322BC51C900310FF0 /* Assets.xcassets */,
-				8CA6267522BC51C900310FF0 /* MainMenu.xib */,
 				8CA6267822BC51C900310FF0 /* Info.plist */,
 				8CA6267922BC51C900310FF0 /* colordart.entitlements */,
 				8CA6267022BC51C900310FF0 /* colordart.xcdatamodeld */,
+				8C45536622C5699500628CEC /* CaptureViewController.swift */,
+				8C737B2A22C6CC7500143F9E /* main.swift */,
 			);
 			path = colordart;
 			sourceTree = "<group>";
@@ -229,7 +232,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CA6267422BC51C900310FF0 /* Assets.xcassets in Resources */,
-				8CA6267722BC51C900310FF0 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +257,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CA6267222BC51C900310FF0 /* colordart.xcdatamodeld in Sources */,
+				8C45536722C5699500628CEC /* CaptureViewController.swift in Sources */,
+				8C737B2B22C6CC7500143F9E /* main.swift in Sources */,
 				8CA6266F22BC51C900310FF0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,17 +293,6 @@
 			targetProxy = 8CA6268A22BC51C900310FF0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		8CA6267522BC51C900310FF0 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8CA6267622BC51C900310FF0 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8CA6269022BC51C900310FF0 /* Debug */ = {
