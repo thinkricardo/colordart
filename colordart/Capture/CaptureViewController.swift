@@ -11,13 +11,10 @@ import Cocoa
 class CaptureViewController: NSViewController {
 
     override func loadView() {
-        let frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 100))
-        let view = NSView(frame: frame)
+        let captureFrame: NSRect = NSRect(origin: .zero, size: CGSize(width: 100, height: 100))
+        let captureView: CaptureView = CaptureView(frame: captureFrame)
         
-        view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.blue.cgColor
-        
-        self.view = view
+        self.view = captureView
     }
     
     override func viewDidLoad() {
