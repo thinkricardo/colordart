@@ -16,4 +16,8 @@ class CaptureView: NSView {
         // Drawing code here.
     }
     
+    func updateArea(withImage image: CGImage) {
+        self.layer?.contents = image;
+    }
+    
 }
