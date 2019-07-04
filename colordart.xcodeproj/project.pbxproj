@@ -77,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C737B2E22CEA60700143F9E /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				8C45536622C5699500628CEC /* CaptureViewController.swift */,
+				8C737B2C22CEA58600143F9E /* CaptureView.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
 		8CA6266222BC51C900310FF0 = {
 			isa = PBXGroup;
 			children = (
@@ -100,14 +109,13 @@
 		8CA6266D22BC51C900310FF0 /* colordart */ = {
 			isa = PBXGroup;
 			children = (
+				8C737B2E22CEA60700143F9E /* Capture */,
 				8CA6266E22BC51C900310FF0 /* AppDelegate.swift */,
 				8CA6267322BC51C900310FF0 /* Assets.xcassets */,
 				8CA6267822BC51C900310FF0 /* Info.plist */,
 				8CA6267922BC51C900310FF0 /* colordart.entitlements */,
 				8CA6267022BC51C900310FF0 /* colordart.xcdatamodeld */,
-				8C45536622C5699500628CEC /* CaptureViewController.swift */,
 				8C737B2A22C6CC7500143F9E /* main.swift */,
-				8C737B2C22CEA58600143F9E /* CaptureView.swift */,
 			);
 			path = colordart;
 			sourceTree = "<group>";
