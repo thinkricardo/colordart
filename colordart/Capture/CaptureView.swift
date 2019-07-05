@@ -17,7 +17,8 @@ class CaptureView: NSView {
     }
     
     func updateArea(withImage image: CGImage) {
-        self.layer?.contents = image;
+        let zoomedImage: CGImage? = image.cropping(to: CGRect(x: 0, y: 0, width: 50, height: 50))
+        self.layer?.contents = zoomedImage;
     }
     
 }
