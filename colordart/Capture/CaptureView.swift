@@ -17,7 +17,19 @@ class CaptureView: NSView {
     }
     
     func updateArea(withImage image: CGImage) {
-        let zoomedImage: CGImage? = image.cropping(to: CGRect(x: 0, y: 0, width: 5, height: 5))
+        let zoomScale: CGFloat = 20;
+        let zoomFactor: CGFloat = 1 / zoomScale
+        
+        let size: CGFloat = 100 * zoomFactor
+        
+        let center: CGFloat = CGFloat(image.width) / CGFloat(2)
+        let start = center - (size / 2)
+        
+        let zoomPoint = CGPoint(x: Int(start), y: Int(start))
+        let zoomSize = CGSize(width: size, height: size)
+        
+        let zoomRect = CGRect(origin: zoomPoint, size: zoomSize)
+        let zoomedImage: CGImage? = image.cropping(to: zoomRect)
         
         self.layer?.magnificationFilter = .nearest
         self.layer?.contents = zoomedImage
