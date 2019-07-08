@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C45536722C5699500628CEC /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45536622C5699500628CEC /* CaptureViewController.swift */; };
 		8C737B2B22C6CC7500143F9E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C737B2A22C6CC7500143F9E /* main.swift */; };
+		8C737B2D22CEA58600143F9E /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C737B2C22CEA58600143F9E /* CaptureView.swift */; };
 		8CA6266F22BC51C900310FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6266E22BC51C900310FF0 /* AppDelegate.swift */; };
 		8CA6267222BC51C900310FF0 /* colordart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6267022BC51C900310FF0 /* colordart.xcdatamodeld */; };
 		8CA6267422BC51C900310FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CA6267322BC51C900310FF0 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		8C45536622C5699500628CEC /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		8C737B2A22C6CC7500143F9E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		8C737B2C22CEA58600143F9E /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
 		8CA6266B22BC51C900310FF0 /* colordart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = colordart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA6266E22BC51C900310FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CA6267122BC51C900310FF0 /* colordart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = colordart.xcdatamodel; sourceTree = "<group>"; };
@@ -75,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C737B2E22CEA60700143F9E /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				8C45536622C5699500628CEC /* CaptureViewController.swift */,
+				8C737B2C22CEA58600143F9E /* CaptureView.swift */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
 		8CA6266222BC51C900310FF0 = {
 			isa = PBXGroup;
 			children = (
@@ -98,12 +109,12 @@
 		8CA6266D22BC51C900310FF0 /* colordart */ = {
 			isa = PBXGroup;
 			children = (
+				8C737B2E22CEA60700143F9E /* Capture */,
 				8CA6266E22BC51C900310FF0 /* AppDelegate.swift */,
 				8CA6267322BC51C900310FF0 /* Assets.xcassets */,
 				8CA6267822BC51C900310FF0 /* Info.plist */,
 				8CA6267922BC51C900310FF0 /* colordart.entitlements */,
 				8CA6267022BC51C900310FF0 /* colordart.xcdatamodeld */,
-				8C45536622C5699500628CEC /* CaptureViewController.swift */,
 				8C737B2A22C6CC7500143F9E /* main.swift */,
 			);
 			path = colordart;
@@ -260,6 +271,7 @@
 				8C45536722C5699500628CEC /* CaptureViewController.swift in Sources */,
 				8C737B2B22C6CC7500143F9E /* main.swift in Sources */,
 				8CA6266F22BC51C900310FF0 /* AppDelegate.swift in Sources */,
+				8C737B2D22CEA58600143F9E /* CaptureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

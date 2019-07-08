@@ -9,15 +9,11 @@
 import Cocoa
 
 class CaptureViewController: NSViewController {
+    
+    private lazy var captureView: CaptureView = self.createCaptureView()
 
     override func loadView() {
-        let frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 100))
-        let view = NSView(frame: frame)
-        
-        view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.blue.cgColor
-        
-        self.view = view
+        self.view = captureView
     }
     
     override func viewDidLoad() {
@@ -26,6 +22,11 @@ class CaptureViewController: NSViewController {
         NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: {(event: NSEvent) -> Void in
             self.mouseMoved(mouseLocation: NSEvent.mouseLocation)
         })
+    }
+    
+    func createCaptureView() -> CaptureView {
+        let captureFrame: NSRect = NSRect(origin: .zero, size: CGSize(width: 100, height: 100))
+        return CaptureView(frame: captureFrame)
     }
     
     func mouseMoved(mouseLocation: NSPoint) {
@@ -38,7 +39,7 @@ class CaptureViewController: NSViewController {
         let area = CGRect(x: convertedPoint.x - 50, y: convertedPoint.y - 50, width: 100, height: 100)
         let image = CGWindowListCreateImage(area, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)
         
-        self.view.layer?.contents = image
+        captureView.updateArea(withImage: image!)
         
         self.getColor(fromImage: image!)
     }
