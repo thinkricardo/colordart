@@ -9,6 +9,8 @@
 import Cocoa
 
 class CaptureView: NSView {
+    
+    private var zoomScale = 10
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -17,22 +19,20 @@ class CaptureView: NSView {
     }
     
     func updateArea(withImage image: CGImage) {
-        let zoomScale: CGFloat = 20;
-        let zoomFactor: CGFloat = 1 / zoomScale
+        let zoomedRect = calculateZoomedRect(width: image.width, scale: zoomScale)
+        let zoomedImage: CGImage? = image.cropping(to: zoomedRect)
         
-        let size: CGFloat = 100 * zoomFactor
-        
-        let center: CGFloat = CGFloat(image.width) / CGFloat(2)
-        let start = center - (size / 2)
-        
-        let zoomPoint = CGPoint(x: Int(start), y: Int(start))
-        let zoomSize = CGSize(width: size, height: size)
-        
-        let zoomRect = CGRect(origin: zoomPoint, size: zoomSize)
-        let zoomedImage: CGImage? = image.cropping(to: zoomRect)
-        
-        self.layer?.magnificationFilter = .nearest
         self.layer?.contents = zoomedImage
+        self.layer?.magnificationFilter = .nearest
+    }
+    
+    func calculateZoomedRect(width: Int, scale: Int) -> CGRect {
+        let center: CGFloat = CGFloat(width) / 2
+        let size: CGFloat = CGFloat(width) / CGFloat(scale)
+        
+        let start: CGFloat = center - (size / 2)
+        
+        return CGRect(x: start, y: start, width: size, height: size)
     }
     
 }
