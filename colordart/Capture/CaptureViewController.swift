@@ -10,7 +10,10 @@ import Cocoa
 
 class CaptureViewController: NSViewController {
     
-    private lazy var captureView: CaptureView = self.createCaptureView()
+    private lazy var captureView: CaptureView = createCaptureView()
+    
+    private var captureViewSize: Int = 200
+    private var zoomScale: Int = 10
 
     override func loadView() {
         self.view = captureView
@@ -25,28 +28,39 @@ class CaptureViewController: NSViewController {
     }
     
     func createCaptureView() -> CaptureView {
-        let captureFrame: NSRect = NSRect(origin: .zero, size: CGSize(width: 100, height: 100))
-        return CaptureView(frame: captureFrame)
+        let size = CGSize(width: captureViewSize, height: captureViewSize)
+        let frame = NSRect(origin: .zero, size: size)
+        
+        return CaptureView(frame: frame)
     }
     
     func mouseMoved(mouseLocation: NSPoint) {
-        self.captureArea(aroundPoint: mouseLocation)
+        captureArea(aroundPoint: mouseLocation)
     }
     
     func captureArea(aroundPoint: NSPoint) {
-        let convertedPoint = self.convertCoordinates(point: aroundPoint)
+        let convertedPoint = convertCoordinates(point: aroundPoint)
         
-        let area = CGRect(x: convertedPoint.x - 50, y: convertedPoint.y - 50, width: 100, height: 100)
-        let image = CGWindowListCreateImage(area, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)
+        let capturedArea = calculateCaptureArea(point: convertedPoint, width: captureViewSize, scale: zoomScale)
+        let capturedImage = CGWindowListCreateImage(capturedArea, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)
         
-        captureView.updateArea(withImage: image!)
+        captureView.updateView(capturedImage: capturedImage!)
         
-        self.getColor(fromImage: image!)
+        self.getColor(fromImage: capturedImage!)
     }
     
+    func calculateCaptureArea(point: NSPoint, width: Int, scale: Int) -> CGRect {
+        let size = CGFloat(width) / CGFloat(scale)
+        let start = size / 2
+        
+        return CGRect(x: point.x - start, y: point.y - start, width: size + 1, height: size + 1)
+    }
+
     func getColor(fromImage image: CGImage) {
-        let image = NSBitmapImageRep.init(cgImage: image)
-        let color = image.colorAt(x: 50, y: 50)
+        let bitmap = NSBitmapImageRep.init(cgImage: image)
+
+        let middle = image.width / 2
+        let color = bitmap.colorAt(x: middle, y: middle)
         
         let red = Int(round(color!.redComponent * 255))
         let green = Int(round(color!.greenComponent * 255))
@@ -60,9 +74,9 @@ class CaptureViewController: NSViewController {
     }
     
     func convertCoordinates(point: NSPoint) -> NSPoint {
-        let screen: NSScreen = self.currentScreenForMouseLocation(point: point)!
+        let screen = self.currentScreenForMouseLocation(point: point)!
         
-        return NSPoint(x: point.x, y: screen.frame.height - point.y)
+        return NSPoint(x: floor(point.x), y: floor(screen.frame.height - point.y))
     }
     
 }
