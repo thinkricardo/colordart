@@ -9,8 +9,8 @@
 import Cocoa
 
 class CaptureView: NSView {
-    
-    private var zoomScale = 10
+
+    private lazy var grid: CAShapeLayer = CAShapeLayer()
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -18,21 +18,37 @@ class CaptureView: NSView {
         // Drawing code here.
     }
     
-    func updateArea(withImage image: CGImage) {
-        let zoomedRect = calculateZoomedRect(width: image.width, scale: zoomScale)
-        let zoomedImage: CGImage? = image.cropping(to: zoomedRect)
-        
-        self.layer?.contents = zoomedImage
+    func updateView(capturedImage: CGImage) {
+        self.layer?.contents = capturedImage
         self.layer?.magnificationFilter = .nearest
+        
+        drawGrid(zoomedSize: frame.width, capturedSize: CGFloat(capturedImage.width))
     }
     
-    func calculateZoomedRect(width: Int, scale: Int) -> CGRect {
-        let center: CGFloat = CGFloat(width) / 2
-        let size: CGFloat = CGFloat(width) / CGFloat(scale)
+    func drawGrid(zoomedSize: CGFloat, capturedSize: CGFloat) {
+        let path = NSBezierPath()
         
-        let start: CGFloat = center - (size / 2)
+        let slots = Int(capturedSize)
+        let slotSize = zoomedSize / capturedSize
         
-        return CGRect(x: start, y: start, width: size, height: size)
+        for i in 1 ..< slots {
+            let position = CGFloat(i) * slotSize
+
+            // vertical lines
+            path.move(to: NSPoint(x: position, y: .zero))
+            path.line(to: NSPoint(x: position, y: zoomedSize))
+
+            // horizontal lines
+            path.move(to: NSPoint(x: .zero, y: position))
+            path.line(to: NSPoint(x: zoomedSize, y: position))
+        }
+
+        grid.path = path.cgPath
+
+        grid.opacity = 0.2
+        grid.strokeColor = NSColor.black.cgColor
+
+        layer?.addSublayer(grid)
     }
     
 }
