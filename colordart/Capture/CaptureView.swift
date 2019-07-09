@@ -59,15 +59,16 @@ class CaptureView: NSView {
         
         let start: CGFloat = center - (size / 2)
         
-        return CGRect(x: start, y: start, width: size, height: size)
+        return CGRect(x: start, y: start, width: size + 1, height: size + 1)
     }
     
     func drawGrid(originalWidth: CGFloat, zoomedWidth: CGFloat) {
         let path = NSBezierPath()
-        let slots: Int = Int(originalWidth / zoomedWidth)
+        let slots: Int = Int(zoomedWidth)
+        let size = Int(originalWidth) / Int(zoomedWidth)
         
         for i in 1 ..< slots {
-            let position = CGFloat(i) * CGFloat(slots)
+            let position = CGFloat(i) * CGFloat(size)
             
             path.move(to: NSPoint(x: position, y: 0))
             path.line(to: NSPoint(x: position, y: 100))
