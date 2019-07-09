@@ -34,12 +34,12 @@ class CaptureViewController: NSViewController {
 
     func registerEventMonitor() {
         NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: {(event: NSEvent) -> Void in
-            self.mouseMoved(mouseLocation: NSEvent.mouseLocation)
+            self.mouseMoved(at: event.locationInWindow)
         })
     }
 
-    func mouseMoved(mouseLocation: NSPoint) {
-        captureArea(aroundPoint: mouseLocation)
+    func mouseMoved(at point: NSPoint) {
+        captureArea(aroundPoint: point)
     }
     
     func captureArea(aroundPoint: NSPoint) {
