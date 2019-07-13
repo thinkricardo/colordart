@@ -35,13 +35,13 @@ class CaptureView: NSView {
         for i in 1 ..< slots {
             let position = CGFloat(i) * slotSize
 
-            // vertical lines
-            path.move(to: NSPoint(x: position, y: .zero))
-            path.line(to: NSPoint(x: position, y: zoomedSize))
-
             // horizontal lines
             path.move(to: NSPoint(x: .zero, y: position))
             path.line(to: NSPoint(x: zoomedSize, y: position))
+
+            // vertical lines
+            path.move(to: NSPoint(x: position, y: .zero))
+            path.line(to: NSPoint(x: position, y: zoomedSize))
         }
 
         grid.path = path.cgPath
@@ -51,14 +51,13 @@ class CaptureView: NSView {
 
         layer?.addSublayer(grid)
 
-        drawBullseye(withSize: slotSize)
+        drawBullseye(withSize: slotSize, at: zoomedSize / 2)
     }
 
-    func drawBullseye(withSize size: CGFloat) {
+    func drawBullseye(withSize size: CGFloat, at middlePoint: CGFloat) {
         let path = NSBezierPath()
 
         let halfSize: CGFloat = size / 2
-        let middlePoint: CGFloat = frame.width / 2
 
         // left
         path.move(to: NSPoint(x: middlePoint - halfSize, y: middlePoint - halfSize))
@@ -68,13 +67,13 @@ class CaptureView: NSView {
         path.move(to: NSPoint(x: middlePoint + halfSize, y: middlePoint - halfSize))
         path.line(to: NSPoint(x: middlePoint + halfSize, y: middlePoint + halfSize))
 
-        // top
-        path.move(to: NSPoint(x: middlePoint - halfSize, y: middlePoint + halfSize))
-        path.line(to: NSPoint(x: middlePoint + halfSize, y: middlePoint + halfSize))
-
         // bottom
         path.move(to: NSPoint(x: middlePoint - halfSize, y: middlePoint - halfSize))
         path.line(to: NSPoint(x: middlePoint + halfSize, y: middlePoint - halfSize))
+
+        // top
+        path.move(to: NSPoint(x: middlePoint - halfSize, y: middlePoint + halfSize))
+        path.line(to: NSPoint(x: middlePoint + halfSize, y: middlePoint + halfSize))
 
         bullseye.path = path.cgPath
 
