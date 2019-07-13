@@ -11,6 +11,7 @@
 		8C45536722C5699500628CEC /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45536622C5699500628CEC /* CaptureViewController.swift */; };
 		8C51EACF22D9E63C002AFF2D /* NSScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C51EACE22D9E63C002AFF2D /* NSScreen.swift */; };
 		8C51EAD222DA56D5002AFF2D /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C51EAD122DA56D5002AFF2D /* Number.swift */; };
+		8C51EAD422DA593C002AFF2D /* CaptureInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C51EAD322DA593C002AFF2D /* CaptureInfoView.swift */; };
 		8C737B2B22C6CC7500143F9E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C737B2A22C6CC7500143F9E /* main.swift */; };
 		8C737B2D22CEA58600143F9E /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C737B2C22CEA58600143F9E /* CaptureView.swift */; };
 		8CA6266F22BC51C900310FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6266E22BC51C900310FF0 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		8C45536622C5699500628CEC /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
 		8C51EACE22D9E63C002AFF2D /* NSScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSScreen.swift; sourceTree = "<group>"; };
 		8C51EAD122DA56D5002AFF2D /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
+		8C51EAD322DA593C002AFF2D /* CaptureInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureInfoView.swift; sourceTree = "<group>"; };
 		8C737B2A22C6CC7500143F9E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8C737B2C22CEA58600143F9E /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
 		8CA6266B22BC51C900310FF0 /* colordart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = colordart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 			children = (
 				8C45536622C5699500628CEC /* CaptureViewController.swift */,
 				8C737B2C22CEA58600143F9E /* CaptureView.swift */,
+				8C51EAD322DA593C002AFF2D /* CaptureInfoView.swift */,
 			);
 			path = Capture;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C51EAD422DA593C002AFF2D /* CaptureInfoView.swift in Sources */,
 				8C51EACF22D9E63C002AFF2D /* NSScreen.swift in Sources */,
 				8CA6267222BC51C900310FF0 /* colordart.xcdatamodeld in Sources */,
 				8C45536722C5699500628CEC /* CaptureViewController.swift in Sources */,
