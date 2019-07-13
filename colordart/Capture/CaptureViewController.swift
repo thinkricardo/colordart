@@ -16,26 +16,30 @@ class CaptureViewController: NSViewController {
     private var zoomScale: Int = 10
 
     override func loadView() {
-        self.view = captureView
+        view = captureView
+    }
+
+    func createCaptureView() -> CaptureView {
+        let size = CGSize(width: captureViewSize, height: captureViewSize)
+        let frame = NSRect(origin: .zero, size: size)
+
+        return CaptureView(frame: frame)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        registerEventMonitor()
+    }
+
+    func registerEventMonitor() {
         NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: {(event: NSEvent) -> Void in
-            self.mouseMoved(mouseLocation: NSEvent.mouseLocation)
+            self.mouseMoved(at: event.locationInWindow)
         })
     }
-    
-    func createCaptureView() -> CaptureView {
-        let size = CGSize(width: captureViewSize, height: captureViewSize)
-        let frame = NSRect(origin: .zero, size: size)
-        
-        return CaptureView(frame: frame)
-    }
-    
-    func mouseMoved(mouseLocation: NSPoint) {
-        captureArea(aroundPoint: mouseLocation)
+
+    func mouseMoved(at point: NSPoint) {
+        captureArea(aroundPoint: point)
     }
     
     func captureArea(aroundPoint: NSPoint) {
