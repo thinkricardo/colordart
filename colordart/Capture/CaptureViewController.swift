@@ -45,15 +45,15 @@ class CaptureViewController: NSViewController {
     func captureArea(aroundPoint: NSPoint) {
         let convertedPoint = NSScreen.convertScreenCoordinates(point: aroundPoint)
         
-        let capturedArea = calculateCaptureArea(point: convertedPoint, size: captureViewSize, scale: zoomScale)
-        let capturedImage = CGWindowListCreateImage(capturedArea, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)
+        let areaToCapture = calculateAreaToCapture(at: convertedPoint, withSize: captureViewSize, andScale: zoomScale)
+        let capturedImage = CGWindowListCreateImage(areaToCapture, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)!
         
-        captureView.updateView(capturedImage: capturedImage!)
+        captureView.updateView(capturedImage: capturedImage)
         
-        self.getColor(fromImage: capturedImage!)
+        self.getColor(fromImage: capturedImage)
     }
     
-    func calculateCaptureArea(point: NSPoint, size: Int, scale: Int) -> CGRect {
+    func calculateAreaToCapture(at point: NSPoint, withSize size: Int, andScale scale: Int) -> CGRect {
         let scaledSize = safeguardOddNumber(size / scale)
 
         let startX = Int(point.x) - scaledSize / 2
