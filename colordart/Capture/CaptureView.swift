@@ -11,6 +11,7 @@ import Cocoa
 class CaptureView: NSView {
 
     private lazy var grid: CAShapeLayer = CAShapeLayer()
+    private lazy var bullseye: CAShapeLayer = CAShapeLayer()
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -49,6 +50,39 @@ class CaptureView: NSView {
         grid.strokeColor = NSColor.black.cgColor
 
         layer?.addSublayer(grid)
+
+        drawBullseye(withSize: slotSize)
+    }
+
+    func drawBullseye(withSize size: CGFloat) {
+        let path = NSBezierPath()
+
+        let halfSize: CGFloat = size / 2
+        let middlePoint: CGFloat = frame.width / 2
+
+        // left
+        path.move(to: NSPoint(x: middlePoint - halfSize, y: middlePoint - halfSize))
+        path.line(to: NSPoint(x: middlePoint - halfSize, y: middlePoint + halfSize))
+
+        // right
+        path.move(to: NSPoint(x: middlePoint + halfSize, y: middlePoint - halfSize))
+        path.line(to: NSPoint(x: middlePoint + halfSize, y: middlePoint + halfSize))
+
+        // top
+        path.move(to: NSPoint(x: middlePoint - halfSize, y: middlePoint + halfSize))
+        path.line(to: NSPoint(x: middlePoint + halfSize, y: middlePoint + halfSize))
+
+        // bottom
+        path.move(to: NSPoint(x: middlePoint - halfSize, y: middlePoint - halfSize))
+        path.line(to: NSPoint(x: middlePoint + halfSize, y: middlePoint - halfSize))
+
+        bullseye.path = path.cgPath
+
+        bullseye.lineWidth = 2
+        bullseye.opacity = 0.8
+        bullseye.strokeColor = NSColor.white.cgColor
+
+        layer?.addSublayer(bullseye)
     }
     
 }
