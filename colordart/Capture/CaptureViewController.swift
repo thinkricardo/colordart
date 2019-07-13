@@ -54,10 +54,13 @@ class CaptureViewController: NSViewController {
     }
     
     func calculateCaptureArea(point: NSPoint, width: Int, scale: Int) -> CGRect {
-        let size = CGFloat(width) / CGFloat(scale)
+        let size = safeguardOddNumber(value: width / scale)
         let start = size / 2
-        
-        return CGRect(x: point.x - start, y: point.y - start, width: size + 1, height: size + 1)
+
+        let startX = Int(point.x) - start
+        let startY = Int(point.y) - start
+
+        return CGRect(x: startX, y: startY, width: size, height: size)
     }
 
     func getColor(fromImage image: CGImage) {
@@ -73,14 +76,18 @@ class CaptureViewController: NSViewController {
         print("r:\(red) g:\(green) b:\(blue)")
     }
     
-    func currentScreenForMouseLocation(point: NSPoint) -> NSScreen? {
-        return NSScreen.screens.first(where: { NSMouseInRect(point, $0.frame, false) })
-    }
-    
     func convertCoordinates(point: NSPoint) -> NSPoint {
-        let screen = self.currentScreenForMouseLocation(point: point)!
+        let screen = NSScreen.currentScreenAt(point: point)
         
         return NSPoint(x: floor(point.x), y: floor(screen.frame.height - point.y))
+    }
+
+    func safeguardOddNumber(value: Int) -> Int {
+        if value % 2 == 0 {
+            return value + 1;
+        }
+
+        return value;
     }
     
 }

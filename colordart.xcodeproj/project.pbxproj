@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C2B260222D4B550001508DC /* NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B260122D4B550001508DC /* NSBezierPath.swift */; };
 		8C45536722C5699500628CEC /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C45536622C5699500628CEC /* CaptureViewController.swift */; };
+		8C51EACF22D9E63C002AFF2D /* NSScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C51EACE22D9E63C002AFF2D /* NSScreen.swift */; };
 		8C737B2B22C6CC7500143F9E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C737B2A22C6CC7500143F9E /* main.swift */; };
 		8C737B2D22CEA58600143F9E /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C737B2C22CEA58600143F9E /* CaptureView.swift */; };
 		8CA6266F22BC51C900310FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6266E22BC51C900310FF0 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		8C2B260122D4B550001508DC /* NSBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSBezierPath.swift; sourceTree = "<group>"; };
 		8C45536622C5699500628CEC /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		8C51EACE22D9E63C002AFF2D /* NSScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSScreen.swift; sourceTree = "<group>"; };
 		8C737B2A22C6CC7500143F9E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8C737B2C22CEA58600143F9E /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
 		8CA6266B22BC51C900310FF0 /* colordart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = colordart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				8C2B260122D4B550001508DC /* NSBezierPath.swift */,
+				8C51EACE22D9E63C002AFF2D /* NSScreen.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C51EACF22D9E63C002AFF2D /* NSScreen.swift in Sources */,
 				8CA6267222BC51C900310FF0 /* colordart.xcdatamodeld in Sources */,
 				8C45536722C5699500628CEC /* CaptureViewController.swift in Sources */,
 				8C737B2B22C6CC7500143F9E /* main.swift in Sources */,
