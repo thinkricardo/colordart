@@ -9,6 +9,7 @@
 import Cocoa
 
 extension NSBezierPath {
+
     var cgPath: CGPath {
         let path = CGMutablePath()
         var points = [CGPoint](repeating: .zero, count: 3)
@@ -32,4 +33,5 @@ extension NSBezierPath {
         
         return path
     }
+    
 }

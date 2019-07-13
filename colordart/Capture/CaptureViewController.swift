@@ -43,9 +43,9 @@ class CaptureViewController: NSViewController {
     }
     
     func captureArea(aroundPoint: NSPoint) {
-        let convertedPoint = convertCoordinates(point: aroundPoint)
+        let convertedPoint = NSScreen.convertScreenCoordinates(point: aroundPoint)
         
-        let capturedArea = calculateCaptureArea(point: convertedPoint, width: captureViewSize, scale: zoomScale)
+        let capturedArea = calculateCaptureArea(point: convertedPoint, size: captureViewSize, scale: zoomScale)
         let capturedImage = CGWindowListCreateImage(capturedArea, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)
         
         captureView.updateView(capturedImage: capturedImage!)
@@ -53,14 +53,13 @@ class CaptureViewController: NSViewController {
         self.getColor(fromImage: capturedImage!)
     }
     
-    func calculateCaptureArea(point: NSPoint, width: Int, scale: Int) -> CGRect {
-        let size = safeguardOddNumber(value: width / scale)
-        let start = size / 2
+    func calculateCaptureArea(point: NSPoint, size: Int, scale: Int) -> CGRect {
+        let scaledSize = safeguardOddNumber(size / scale)
 
-        let startX = Int(point.x) - start
-        let startY = Int(point.y) - start
+        let startX = Int(point.x) - scaledSize / 2
+        let startY = Int(point.y) - scaledSize / 2
 
-        return CGRect(x: startX, y: startY, width: size, height: size)
+        return CGRect(x: startX, y: startY, width: scaledSize, height: scaledSize)
     }
 
     func getColor(fromImage image: CGImage) {
@@ -74,20 +73,6 @@ class CaptureViewController: NSViewController {
         let blue = Int(round(color!.blueComponent * 255))
 
         print("r:\(red) g:\(green) b:\(blue)")
-    }
-    
-    func convertCoordinates(point: NSPoint) -> NSPoint {
-        let screen = NSScreen.currentScreenAt(point: point)
-        
-        return NSPoint(x: floor(point.x), y: floor(screen.frame.height - point.y))
-    }
-
-    func safeguardOddNumber(value: Int) -> Int {
-        if value % 2 == 0 {
-            return value + 1;
-        }
-
-        return value;
     }
     
 }
