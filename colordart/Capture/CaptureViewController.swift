@@ -3,19 +3,31 @@ import Cocoa
 class CaptureViewController: NSViewController {
     
     private lazy var captureView: CaptureView = createCaptureView()
+    private lazy var infoView: CaptureInfoView = createInfoView()
     
     private var captureViewSize: Int = 200
     private var zoomScale: Int = 10
 
     override func loadView() {
         view = captureView
+        view.addSubview(infoView)
     }
 
     func createCaptureView() -> CaptureView {
         let size = CGSize(width: captureViewSize, height: captureViewSize)
         let frame = NSRect(origin: .zero, size: size)
 
-        return CaptureView(frame: frame)
+        let view = CaptureView(frame: frame)
+        view.wantsLayer = true
+
+        return view
+    }
+
+    func createInfoView() -> CaptureInfoView {
+        let size = CGSize(width: captureViewSize, height: 20)
+        let frame = NSRect(origin: .zero, size: size)
+
+        return CaptureInfoView(frame: frame)
     }
     
     override func viewDidLoad() {

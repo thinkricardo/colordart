@@ -8,13 +8,12 @@ class CaptureView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
-        // Drawing code here.
+        self.layer?.magnificationFilter = .nearest
     }
     
     func updateView(capturedImage: CGImage) {
         self.layer?.contents = capturedImage
-        self.layer?.magnificationFilter = .nearest
-        
+
         drawGrid(zoomedSize: frame.width, capturedSize: CGFloat(capturedImage.width))
     }
     
