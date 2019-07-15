@@ -49,18 +49,17 @@ class CaptureViewController: NSViewController {
     }
 
     func mouseMoved(at point: NSPoint) {
+        moveWindow(at: point)
         captureArea(aroundPoint: point)
     }
-    
-    func captureArea(aroundPoint: NSPoint) {
-        let convertedPoint = NSScreen.convertScreenCoordinates(point: aroundPoint)
-        
-        let areaToCapture = calculateAreaToCapture(at: convertedPoint, withSize: captureViewSize, andScale: zoomScale)
-        let capturedImage = CGWindowListCreateImage(areaToCapture, .optionOnScreenBelowWindow, kCGNullWindowID, .bestResolution)!
-        
-        captureView.updateView(capturedImage: capturedImage)
-        
-        captureColor(fromImage: capturedImage)
+
+    func moveWindow(at point: NSPoint) {
+        let x = Int(point.x) - captureViewSize / 2
+        let y = Int(point.y) - captureViewSize / 2
+
+        let newLocation = NSPoint(x: x, y: y)
+
+        view.window!.setFrameOrigin(newLocation)
     }
     
     func calculateAreaToCapture(at point: NSPoint, withSize size: Int, andScale scale: Int) -> CGRect {
@@ -70,6 +69,20 @@ class CaptureViewController: NSViewController {
         let startY = Int(point.y) - scaledSize / 2
 
         return CGRect(x: startX, y: startY, width: scaledSize, height: scaledSize)
+    }
+
+    func captureArea(aroundPoint: NSPoint) {
+        let convertedPoint = NSScreen.convertScreenCoordinates(point: aroundPoint)
+
+        let windowId = CGWindowID(view.window!.windowNumber)
+        print(windowId)
+
+        let areaToCapture = calculateAreaToCapture(at: convertedPoint, withSize: captureViewSize, andScale: zoomScale)
+        let capturedImage = CGWindowListCreateImage(areaToCapture, .optionOnScreenBelowWindow, windowId, .bestResolution)!
+
+        captureView.updateView(capturedImage: capturedImage)
+
+        captureColor(fromImage: capturedImage)
     }
 
     func captureColor(fromImage image: CGImage) {
