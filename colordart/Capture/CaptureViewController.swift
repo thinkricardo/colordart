@@ -33,12 +33,18 @@ class CaptureViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        registerEventMonitor()
+        registerEventMonitors()
     }
 
-    func registerEventMonitor() {
+    func registerEventMonitors() {
         NSEvent.addGlobalMonitorForEvents(matching: .mouseMoved, handler: {(event: NSEvent) -> Void in
             self.mouseMoved(at: event.locationInWindow)
+        })
+
+        NSEvent.addLocalMonitorForEvents(matching: .mouseMoved, handler: {(event: NSEvent) -> NSEvent? in
+            self.mouseMoved(at: event.locationInWindow)
+
+            return event
         })
     }
 
