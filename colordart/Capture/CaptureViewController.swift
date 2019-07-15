@@ -54,7 +54,7 @@ class CaptureViewController: NSViewController {
         
         captureView.updateView(capturedImage: capturedImage)
         
-        self.getColor(fromImage: capturedImage)
+        captureColor(fromImage: capturedImage)
     }
     
     func calculateAreaToCapture(at point: NSPoint, withSize size: Int, andScale scale: Int) -> CGRect {
@@ -66,7 +66,7 @@ class CaptureViewController: NSViewController {
         return CGRect(x: startX, y: startY, width: scaledSize, height: scaledSize)
     }
 
-    func getColor(fromImage image: CGImage) {
+    func captureColor(fromImage image: CGImage) {
         let bitmap = NSBitmapImageRep.init(cgImage: image)
 
         let middle = image.width / 2
@@ -76,7 +76,9 @@ class CaptureViewController: NSViewController {
         let green = Int(round(color!.greenComponent * 255))
         let blue = Int(round(color!.blueComponent * 255))
 
-        print("r:\(red) g:\(green) b:\(blue)")
+        let colorInfo = "rgb(\(red), \(green), \(blue))"
+
+        infoView.updateView(info: NSString(string: colorInfo))
     }
     
 }
