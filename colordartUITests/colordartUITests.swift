@@ -1,11 +1,3 @@
-//
-//  colordartUITests.swift
-//  colordartUITests
-//
-//  Created by Ricardo Pereira on 21/06/2019.
-//  Copyright © 2019 octoloop. All rights reserved.
-//
-
 import XCTest
 
 class colordartUITests: XCTestCase {

@@ -1,14 +1,7 @@
-//
-//  NSBezierPath.swift
-//  colordart
-//
-//  Created by Ricardo Pereira on 09/07/2019.
-//  Copyright © 2019 octoloop. All rights reserved.
-//
-
 import Cocoa
 
 extension NSBezierPath {
+
     var cgPath: CGPath {
         let path = CGMutablePath()
         var points = [CGPoint](repeating: .zero, count: 3)
@@ -32,4 +25,5 @@ extension NSBezierPath {
         
         return path
     }
+    
 }

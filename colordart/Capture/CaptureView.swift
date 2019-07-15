@@ -1,11 +1,3 @@
-//
-//  CaptureView.swift
-//  colordart
-//
-//  Created by Ricardo Pereira on 04/07/2019.
-//  Copyright © 2019 octoloop. All rights reserved.
-//
-
 import Cocoa
 
 class CaptureView: NSView {
@@ -16,13 +8,12 @@ class CaptureView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
-        // Drawing code here.
+        self.layer?.magnificationFilter = .nearest
     }
     
     func updateView(capturedImage: CGImage) {
         self.layer?.contents = capturedImage
-        self.layer?.magnificationFilter = .nearest
-        
+
         drawGrid(zoomedSize: frame.width, capturedSize: CGFloat(capturedImage.width))
     }
     
